@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory Pizza - Authentic Italian Food</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #f7931e;
+            --dark-text: #2d2d2d;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #fafafa;
+            --accent-green: #4caf50;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: var(--white);
+            padding: 10px 15px;
+            border-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-switcher button {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .language-switcher button.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .language-switcher button:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(250, 250, 250, 0.9)),
+                        url('https://sspark.genspark.ai/cfimages?u1=AvjPf5o8Z%2B6CuiEiwpM%2FjeeM9lxNif05T83X%2FxqmY%2Fe%2BED6txbjrIb0hEECDWogyXaH9YG9AAmDVU247GyQNW6uxv%2BJ55P5poc%2Fjrz8w9RKKgHWoYDRRfuYCzpgL4jIPWlkVUhWqT4h5glosvPID4xc%2Bj3e5eL9pjyjTOQ%3D%3D&u2=y%2BobLGvLYAHOwD%2Br&width=2560');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .logo {
+            font-size: 5.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-text);
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--light-text);
+            font-weight: 300;
+            margin-top: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 25px 5%;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-text);
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--light-text);
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            background: var(--light-bg);
+            padding: 100px 5%;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .featured-item {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .featured-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 30px;
+        }
+
+        .featured-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .featured-content p {
+            color: var(--light-text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Menu Section */
+        .menu-category {
+            margin-bottom: 80px;
+        }
+
+        .menu-category h3 {
+            font-size: 2.5rem;
+            color: var(--dark-text);
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .menu-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(247, 147, 30, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-item:hover::before {
+            opacity: 1;
+        }
+
+        .menu-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.15);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .menu-item h4 {
+            font-size: 1.4rem;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+
+        .menu-item .price {
+            font-size: 1.5rem;
+            color: var(--accent-green);
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .menu-item p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--light-bg);
+            padding: 100px 5%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 5%;
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 40px;
+            background: var(--light-bg);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-card p {
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            padding: 60px 5%;
+            text-align: center;
+            color: var(--white);
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                gap: 25px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Hide/Show Language Content */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Emoji Icons */
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button onclick="switchLanguage('fi')" id="btn-fi" class="active">FI</button>
+        <button onclick="switchLanguage('en')" id="btn-en">EN</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="logo">VICTORY PIZZA</h1>
+            <p class="tagline lang-content active" data-lang="fi">Aito maku. Aito elämys. Aito pizza.</p>
+            <p class="tagline lang-content" data-lang="en">Authentic Taste. Authentic Experience. Authentic Pizza.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary lang-content active" data-lang="fi">Tutustu Menuun</a>
+                <a href="#menu" class="btn btn-primary lang-content" data-lang="en">View Menu</a>
+                <a href="#contact" class="btn btn-secondary lang-content active" data-lang="fi">Ota Yhteyttä</a>
+                <a href="#contact" class="btn btn-secondary lang-content" data-lang="en">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav>
+        <ul class="lang-content active" data-lang="fi">
+            <li><a href="#featured">Suositut</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Galleria</a></li>
+            <li><a href="#contact">Yhteystiedot</a></li>
+        </ul>
+        <ul class="lang-content" data-lang="en">
+            <li><a href="#featured">Featured</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Featured Section -->
+    <section id="featured" class="featured-section">
+        <h2 class="section-title lang-content active" data-lang="fi">Suosituimmat</h2>
+        <h2 class="section-title lang-content" data-lang="en">Our Specialties</h2>
+        <p class="section-subtitle lang-content active" data-lang="fi">Maista asiakkaidemme suosikkeja</p>
+        <p class="section-subtitle lang-content" data-lang="en">Try our customer favorites</p>
+
+        <div class="featured-grid">
+            <div class="featured-item">
+                <img src="https://sspark.genspark.ai/cfimages?u1=AvjPf5o8Z%2B6CuiEiwpM%2FjeeM9lxNif05T83X%2FxqmY%2Fe%2BED6txbjrIb0hEECDWogyXaH9YG9AAmDVU247GyQNW6uxv%2BJ55P5poc%2Fjrz8w9RKKgHWoYDRRfuYCzpgL4jIPWlkVUhWqT4h5glosvPID4xc%2Bj3e5eL9pjyjTOQ%3D%3D&u2=y%2BobLGvLYAHOwD%2Br&width=2560" alt="Pizza" class="featured-image">
+                <div class="featured-content">
+                    <h3>Victory Special</h3>
+                    <p class="lang-content active" data-lang="fi">Erikoisreseptimme: tomaattikastike, juusto, chorizo, paprika, jalapeño ja punasipuli. Täydellinen yhdistelmä makuja.</p>
+                    <p class="lang-content" data-lang="en">Our special recipe: tomato sauce, cheese, chorizo, bell pepper, jalapeño and red onion. Perfect combination of flavors.</p>
+                    <span class="price">14,50 €</span>
+                </div>
+            </div>
+
+            <div class="featured-item">
+                <img src="https://sspark.genspark.ai/cfimages?u1=IrMA%2FYcM3yMMXhtMrAD97apaFE3DAKZbalUao4T7Tfad3ItmLZdhngHMZI9k%2BwFuCA29OIkM1nu9J5Zl219UwaAnCCNn8tz7PETsMzpeaOU4lw%3D%3D&u2=02yvvILFPNLc8rUH&width=2560" alt="Burger" class="featured-image">
+                <div class="featured-content">
+                    <h3 class="lang-content active" data-lang="fi">Kanarulla</h3>
+                    <h3 class="lang-content" data-lang="en">Chicken Wrap</h3>
+                    <p class="lang-content active" data-lang="fi">Grillattua kanaa, tuoreita vihanneksia ja yrttejä pehmeässä tortillassa. Terveellinen ja täyttävä valinta.</p>
+                    <p class="lang-content" data-lang="en">Grilled chicken, fresh vegetables and herbs in soft tortilla. Healthy and filling choice.</p>
+                    <span class="price">12,50 €</span>
+                </div>
+            </div>
+
+            <div class="featured-item">
+                <img src="https://sspark.genspark.ai/cfimages?u1=eyN1B0FwCSFxsNwlr396nur5TKn4EUCu%2F6%2FrUO9v9vZwR0kqcSi%2Fqx4Rg7p%2BsRlcUOV2y%2BMoegCmrQA4LVR33mN7OM2VZLwjHQCUJFv7Vq5eNYU5Lo6I4dAf8TUt3AT1HUPtz9eyMoTzYmqeebc9ufHQZZcpQkNKiYuljg5zdmf0CjtAJUPcFU71xrIO9RcTEfMueww7R1FzmL%2FNhfHwxbf4xRoICc8cnPn1OpwWaD%2B3Q3eTVNwIRt81&u2=21NobsDd2Yp24a%2Bh&width=2560" alt="Salad" class="featured-image">
+                <div class="featured-content">
+                    <h3 class="lang-content active" data-lang="fi">Caesarsalaatti</h3>
+                    <h3 class="lang-content" data-lang="en">Caesar Salad</h3>
+                    <p class="lang-content active" data-lang="fi">Klassinen Caesar-salaatti tuoreista raaka-aineista. Rapeaa salaattia, parmesaania ja croutoneja.</p>
+                    <p class="lang-content" data-lang="en">Classic Caesar salad with fresh ingredients. Crispy lettuce, parmesan and croutons.</p>
+                    <span class="price">11,50 €</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2 class="section-title lang-content active" data-lang="fi">Täydellinen Menu</h2>
+        <h2 class="section-title lang-content" data-lang="en">Complete Menu</h2>
+        <p class="section-subtitle lang-content active" data-lang="fi">Kaikki mitä tarvitset hyvään hetkeen</p>
+        <p class="section-subtitle lang-content" data-lang="en">Everything you need for a great moment</p>
+
+        <!-- Pizzas -->
+        <div class="menu-category">
+            <h3><span class="icon">🍕</span> <span class="lang-content active" data-lang="fi">PIZZAT</span><span class="lang-content" data-lang="en">PIZZAS</span></h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Juustopizza</h4>
+                        <h4 class="lang-content" data-lang="en">Cheese Pizza</h4>
+                        <span class="price">11,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Feta, mozzarella, cheddarjuusto</p>
+                    <p class="lang-content" data-lang="en">Feta, mozzarella, cheddar cheese</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Margarita Pizza</h4>
+                        <span class="price">10,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Tuoretta tomaattia, juusto</p>
+                    <p class="lang-content" data-lang="en">Fresh tomatoes, cheese</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Kinkku Pizza</h4>
+                        <h4 class="lang-content" data-lang="en">Ham Pizza</h4>
+                        <span class="price">13,00 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Pepperoni, ananas, juusto</p>
+                    <p class="lang-content" data-lang="en">Pepperoni, pineapple, cheese</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Kana Pizza</h4>
+                        <h4 class="lang-content" data-lang="en">Chicken Pizza</h4>
+                        <span class="price">12,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Kana, ananas, juusto</p>
+                    <p class="lang-content" data-lang="en">Chicken, pineapple, cheese</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Tonnikala Pizza</h4>
+                        <h4 class="lang-content" data-lang="en">Tuna Pizza</h4>
+                        <span class="price">13,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Tonnikala, juusto, tomaatti, sipuli</p>
+                    <p class="lang-content" data-lang="en">Tuna, cheese, tomato, onion</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Mexicano Pizza</h4>
+                        <span class="price">12,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Tomaatti, kebab, jalapeño, punasipuli</p>
+                    <p class="lang-content" data-lang="en">Tomato, kebab, jalapeño, red onion</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Victory Special</h4>
+                        <span class="price">14,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Tomaattikastike, juusto, chorizo, paprika, jalapeño, punasipuli</p>
+                    <p class="lang-content" data-lang="en">Tomato sauce, cheese, chorizo, bell pepper, jalapeño, red onion</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Romeo Pizza</h4>
+                        <span class="price">12,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Kinkku, ananas, aurajuusto</p>
+                    <p class="lang-content" data-lang="en">Ham, pineapple, blue cheese</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Kebab Pizza</h4>
+                        <span class="price">12,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Salami, ananas, katkarapu, juusto</p>
+                    <p class="lang-content" data-lang="en">Salami, pineapple, shrimp, cheese</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Burgers & Wraps -->
+        <div class="menu-category">
+            <h3><span class="icon">🍔</span> <span class="lang-content active" data-lang="fi">HAMPURILAISET & RULLAT</span><span class="lang-content" data-lang="en">BURGERS & WRAPS</span></h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Hampurilainen</h4>
+                        <h4 class="lang-content" data-lang="en">Hamburger</h4>
+                        <span class="price">7,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Klassinen hampurilainen</p>
+                    <p class="lang-content" data-lang="en">Classic hamburger</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Juustohampurilainen</h4>
+                        <h4 class="lang-content" data-lang="en">Cheeseburger</h4>
+                        <span class="price">9,00 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Hampurilainen juustolla</p>
+                    <p class="lang-content" data-lang="en">Burger with cheese</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Tuplajuusto</h4>
+                        <h4 class="lang-content" data-lang="en">Double Cheese</h4>
+                        <span class="price">8,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Tuplapihvi ja tuplajuusto</p>
+                    <p class="lang-content" data-lang="en">Double patty and double cheese</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Falafel Rulla</h4>
+                        <h4 class="lang-content" data-lang="en">Falafel Wrap</h4>
+                        <span class="price">11,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Tuore falafel tortillassa</p>
+                    <p class="lang-content" data-lang="en">Fresh falafel in tortilla</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Kanarulla</h4>
+                        <h4 class="lang-content" data-lang="en">Chicken Wrap</h4>
+                        <span class="price">12,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Grillattua kanaa tortillassa</p>
+                    <p class="lang-content" data-lang="en">Grilled chicken in tortilla</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Kebabrulla</h4>
+                        <h4 class="lang-content" data-lang="en">Kebab Wrap</h4>
+                        <span class="price">12,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Kebablihaa tortillassa</p>
+                    <p class="lang-content" data-lang="en">Kebab meat in tortilla</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salads -->
+        <div class="menu-category">
+            <h3><span class="icon">🥗</span> <span class="lang-content active" data-lang="fi">SALAATIT</span><span class="lang-content" data-lang="en">SALADS</span></h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Caesarsalaatti</h4>
+                        <h4 class="lang-content" data-lang="en">Caesar Salad</h4>
+                        <span class="price">11,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Klassinen Caesar-salaatti</p>
+                    <p class="lang-content" data-lang="en">Classic Caesar salad</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Tonnikalasalaatti</h4>
+                        <h4 class="lang-content" data-lang="en">Tuna Salad</h4>
+                        <span class="price">10,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Tuoretta tonnikalaa salaatin kera</p>
+                    <p class="lang-content" data-lang="en">Fresh tuna with salad</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Vuohenjuustosalaatti</h4>
+                        <h4 class="lang-content" data-lang="en">Goat Cheese Salad</h4>
+                        <span class="price">11,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Vuohenjuustoa ja tuoreita vihanneksia</p>
+                    <p class="lang-content" data-lang="en">Goat cheese and fresh vegetables</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Talon Pieni Salaatti</h4>
+                        <h4 class="lang-content" data-lang="en">House Small Salad</h4>
+                        <span class="price">4,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Sivusalaatti</p>
+                    <p class="lang-content" data-lang="en">Side salad</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beverages -->
+        <div class="menu-category">
+            <h3><span class="icon">🥤</span> <span class="lang-content active" data-lang="fi">JUOMAT</span><span class="lang-content" data-lang="en">BEVERAGES</span></h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Limu / Juomat</h4>
+                        <h4 class="lang-content" data-lang="en">Soft Drinks</h4>
+                        <span class="price">3,00 €</span>
+                    </div>
+                    <p>Coca-Cola, Coca-Cola Zero, Fanta, Sprite</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Kahvi / Teet</h4>
+                        <h4 class="lang-content" data-lang="en">Coffee / Teas</h4>
+                        <span class="price">2,50 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Tuoretta kahvia ja erikoisteetä</p>
+                    <p class="lang-content" data-lang="en">Fresh coffee and specialty teas</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4 class="lang-content active" data-lang="fi">Mehut</h4>
+                        <h4 class="lang-content" data-lang="en">Juices</h4>
+                        <span class="price">3,00 €</span>
+                    </div>
+                    <p class="lang-content active" data-lang="fi">Tuoremehua</p>
+                    <p class="lang-content" data-lang="en">Fresh juices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <h2 class="section-title lang-content active" data-lang="fi">Galleria</h2>
+        <h2 class="section-title lang-content" data-lang="en">Gallery</h2>
+        <p class="section-subtitle lang-content active" data-lang="fi">Katso mitä meillä on tarjolla</p>
+        <p class="section-subtitle lang-content" data-lang="en">See what we have to offer</p>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://sspark.genspark.ai/cfimages?u1=gZHFpBOzQRPX0zF%2FiKCSgoRJV6izaWm48ls6vhct92KsShkZVoRrtb2291Maxmp4P7Mjo9as291rmaP8F%2BVIjP18mRg9FhMEeVywLIxf6A95X9%2FHT6F%2BcRSUAjwZrmzkxlMSZXzoowTVrIxK8%2FN9qODEEQVQ0iA7jSnpw7xThNGIO8c1JUh%2Ba8qS4aHuPey8DaDKrH%2FNJtlc4RgKtQhfPPdjDIfL0jljR93%2BlPlTyu9Ec4D8&u2=qaXRf8xMusiEvwVG&width=2560" alt="Pizza">
+            </div>
+            <div class="gallery-item">
+                <img src="https://sspark.genspark.ai/cfimages?u1=RMN3WFb8EAZnUPyoGWyWGa3LGbjENHm52MAN12YjZtocUUh7wE275%2BQ9iDpa2EXqmgAKhFx85zMQAauAVZnckXt9wZdUhE0a04JeVrrQMmOfn%2BPLTJU%3D&u2=xDBoec9NwHgcERRg&width=2560" alt="Burger">
+            </div>
+            <div class="gallery-item">
+                <img src="https://sspark.genspark.ai/cfimages?u1=dJZ7sGOWXLmEfiNUQnRMRrlZ8UZ%2BI%2BzgrzImImJZljSJZtwPY2AftJt8nVp5Nn81m9tx1TiV6G9OLFsvoOUQ7LRRGETu6E%2F8G9BWZoObUIUXOgSfsg%3D%3D&u2=qHYuRYYsNvXZeD0U&width=2560" alt="Salad">
+            </div>
+            <div class="gallery-item">
+                <img src="https://plus.unsplash.com/premium_photo-1661762555601-47d088a26b50?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1192">
+            </div>
+            <div class="gallery-item">
+                <img src="https://sspark.genspark.ai/cfimages?u1=whd2MhdfaLUluugKj3ylMMZZDDegB7HvULQMfzgkGtUTiHyn%2Fpyrjn36jGf7y7Vva22Z15qAO86e%2FmW%2BX7E9IMesYUGUWwF2gpemxqpTUoC%2B61p0&u2=0mxQqUvPH%2FGVGlZy&width=2560" alt="Burger">
+            </div>
+            <div class="gallery-item">
+                <img src="https://sspark.genspark.ai/cfimages?u1=Cs5LbM7oU7QRBCmJVZwyZPQ3YBgiVnXZrLnGGNCUtyCFjIXQv7v8ZFDoQRaAjsyArCTYn0MidktryuFYNfOWIohh0P6hlXNYfHGlPNDawBteFUH3%2B1Yx7DRNWopc%2BefEar%2BiPVU%2B5khyLC%2F7U6AxIA%3D%3D&u2=jVb1j6lLDNgbMP4k&width=2560" alt="Salad">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title lang-content active" data-lang="fi">Yhteystiedot</h2>
+        <h2 class="section-title lang-content" data-lang="en">Contact Us</h2>
+        <p class="section-subtitle lang-content active" data-lang="fi">Tule käymään tai ota yhteyttä</p>
+        <p class="section-subtitle lang-content" data-lang="en">Visit us or get in touch</p>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3 class="lang-content active" data-lang="fi">Osoite</h3>
+                <h3 class="lang-content" data-lang="en">Address</h3>
+                <p>Puustellinpolku 25<br>00410 Helsinki<br>Finland</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">📞</div>
+                <h3 class="lang-content active" data-lang="fi">Puhelin</h3>
+                <h3 class="lang-content" data-lang="en">Phone</h3>
+                <p class="lang-content active" data-lang="fi">Soita meille tilauksen tekemiseksi<br>Otamme vastaan tilauksia päivittäin</p>
+                <p class="lang-content" data-lang="en">Call us to place an order<br>We take orders daily</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">⏰</div>
+                <h3 class="lang-content active" data-lang="fi">Aukioloajat</h3>
+                <h3 class="lang-content" data-lang="en">Opening Hours</h3>
+                <p class="lang-content active" data-lang="fi">Maanantai-Perjantai: 11:00 - 22:00<br>Lauantai-Sunnuntai: 12:00 - 23:00</p>
+                <p class="lang-content" data-lang="en">Monday-Friday: 11:00 - 22:00<br>Saturday-Sunday: 12:00 - 23:00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Victory Pizza. <span class="lang-content active" data-lang="fi">Kaikki oikeudet pidätetään.</span><span class="lang-content" data-lang="en">All rights reserved.</span></p>
+        <p style="margin-top: 10px;">Puustellinpolku 25, 00410 Helsinki</p>
+    </footer>
+
+    <script>
+        // Language Switcher Function
+        function switchLanguage(lang) {
+            // Hide all content
+            const allContent = document.querySelectorAll('.lang-content');
+            allContent.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Show selected language content
+            const selectedContent = document.querySelectorAll(`[data-lang="${lang}"]`);
+            selectedContent.forEach(content => {
+                content.classList.add('active');
+            });
+
+            // Update button states
+            document.getElementById('btn-fi').classList.remove('active');
+            document.getElementById('btn-en').classList.remove('active');
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all menu items and cards
+        document.querySelectorAll('.menu-item, .featured-item, .contact-card').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(item);
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+            }
+        });
+    </script>
+</body>
+</html>
